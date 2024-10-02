@@ -49,7 +49,7 @@ class Learner:
 
         with torch.no_grad():
             valid_loss = 0.
-            for x, y in data_ld:
+            for x, y, junk in data_ld:
                 loss = self.model.batch_loss(x, y).item()
                 valid_loss += loss / len(data_ld)
         return valid_loss
@@ -67,7 +67,7 @@ class Learner:
                     time_start = time.time()
                     self.model.train()
                     train_loss = 0
-                    for j, (x, y) in enumerate(train_dl):
+                    for j, (x, y, junk) in enumerate(train_dl):
                         self.optimizer.zero_grad()
                         loss = self.model.batch_loss(x, y)
                         loss.backward()

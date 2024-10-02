@@ -68,6 +68,7 @@ class Wave2Wave(nn.Module):
         if self.debug:
             message = f"batch loss predict mean: {preds.mean():.3f}, target mean: {y.mean():.3f}"
             logger.info(message)
+        # print("Dimension of preds and gt: ", preds.shape, y.shape)
         loss = self.loss_fn(preds, y, w)
         del state
         return loss

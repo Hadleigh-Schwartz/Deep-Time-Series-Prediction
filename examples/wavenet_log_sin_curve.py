@@ -4,7 +4,7 @@
 @contact: evilpsycho42@gmail.com
 @time   : 2020/6/3 10:48
 """
-from deepseries.model import Wave2Wave, RNN2RNN
+from deepseries.model.wave2wave import Wave2Wave
 from deepseries.train import Learner
 from deepseries.data import Value, create_seq2seq_data_loader, forward_split
 from deepseries.nn import RMSE, MSE
@@ -55,3 +55,4 @@ plt.plot(series[:, :, -48:-12].reshape(-1))
 plt.plot(np.arange(36, 48), wave_preds, label="wave2wave preds")
 plt.plot(np.arange(36, 48), series[:, :, test_idx[-12:]].reshape(-1), label="target")
 plt.legend()
+plt.savefig("wave2wave.png")
